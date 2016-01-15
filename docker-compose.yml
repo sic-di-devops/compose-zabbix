@@ -1,0 +1,20 @@
+mariadb:
+  image: zabbix/zabbix-db-mariadb
+  container_name: db
+  volumes:
+    - ./mysql:/var/lib/mysql:rw
+  env_file:
+    - pass.env
+zabbix:
+  image: zabbix/zabbix-server-2.4
+  container_name: zabbix
+  ports:
+    - "80:80"
+    - "10051:10051"
+  links:
+    - mariadb:zabbix.db
+  environment:
+    ZS_DBHost: zabbix.db
+  env_file:
+    - pass.env
+
