@@ -6,7 +6,7 @@ mariadb:
   env_file:
     - pass.env
 zabbix:
-  image: zabbix/zabbix-server-2.4
+  image: zabbix/zabbix-server-3.0:dev
   container_name: zabbix
   ports:
     - "80:80"
